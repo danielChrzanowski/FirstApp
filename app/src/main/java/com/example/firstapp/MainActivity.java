@@ -1,5 +1,6 @@
 package com.example.firstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,20 +16,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button addBtn =  findViewById(R.id.addBtn);
+        Button addBtn = findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText firstET =  findViewById(R.id.firstNum);
-                EditText secondET =  findViewById(R.id.secondNum);
-                TextView resultTV =  findViewById(R.id.result);
+                EditText firstET = findViewById(R.id.firstNum);
+                EditText secondET = findViewById(R.id.secondNum);
+                TextView resultTV = findViewById(R.id.result);
 
-                int num1 = Integer.parseInt(firstET.getText().toString());
-                int num2 = Integer.parseInt(secondET.getText().toString());
-                int result = num1 + num2;
+                try {
+                    int num1 = Integer.parseInt(firstET.getText().toString());
+                    int num2 = Integer.parseInt(secondET.getText().toString());
 
-                resultTV.setText((String.valueOf(result)));
+                    int result = num1 + num2;
+                    resultTV.setText((String.valueOf(result)));
+                } catch (NumberFormatException e) {
+                    startActivity(new Intent(MainActivity.this, PopClass.class));
+                }
+
             }
         });
+
     }
 }
