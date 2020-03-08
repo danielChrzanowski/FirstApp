@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAdClosed(){
                 super.onAdClosed();
-                finish();
+               // finish();
             }
         });
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
-           finish();
+          // finish();
         }
     }
 
